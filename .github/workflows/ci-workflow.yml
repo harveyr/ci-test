@@ -1,6 +1,3 @@
-# https://help.github.com/en/articles/configuring-a-workflow
-# https://github.com/actions/starter-workflows/blob/master/ci/python-package.yml
-# trigger
 name: Python package
 
 on: [push]
