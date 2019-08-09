@@ -1,7 +1,5 @@
-name: Python package
-
+name: ci-workflow
 on: [push]
-
 jobs:
   build:
     runs-on: ubuntu-latest
@@ -24,5 +22,3 @@ jobs:
         run: |
           pip install pytest
           pytest
-  # push:
-  #   runs-on: ubuntu-latest
