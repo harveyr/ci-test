@@ -2,7 +2,7 @@
 name: ci-workflow
 on: [push]
 jobs:
-  build:
+  build-py:
     runs-on: ubuntu-latest
     strategy:
       max-parallel: 4
@@ -35,6 +35,8 @@ jobs:
           version: 10.x
       - name: test node install
         run: node --version
+      - name: npm install
+        run: cd js && npm install
   push:
     needs: [build]
     runs-on: ubuntu-latest
