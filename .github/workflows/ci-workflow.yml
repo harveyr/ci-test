@@ -1,3 +1,4 @@
+# https://help.github.com/en/articles/workflow-syntax-for-github-actions
 name: ci-workflow
 on: [push]
 jobs:
@@ -24,6 +25,7 @@ jobs:
           pytest tests.py
   push:
     needs: [build]
+    runs-on: ubuntu-latest
     steps:
       - name: Push assets
         if: github.branch == 'master'
