@@ -31,11 +31,11 @@ jobs:
           STEPS_CONTEXT: ${{ toJson(steps) }}
         run: echo "$STEPS_CONTEXT"
       - name: if dev branch
-        if: github.ref == 'gh-ci-test'
+        if: github.ref == 'refs/heads/gh-ci-test'
         run: |
           echo "this is the dev branch"
       - name: if master branch
-        if: github.branch == 'master'
+        if: github.ref == 'refs/heads/master'
         run: |
           echo "this is the master branch"
   # build-py:
