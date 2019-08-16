@@ -5,7 +5,6 @@ jobs:
   futz-around:
     runs-on: ubuntu-latest
     steps:
-      # - uses: actions/checkout@master
       - name: Dump GitHub context
         env:
           GITHUB_CONTEXT: ${{ toJson(github) }}
@@ -79,6 +78,6 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Push assets
-        if: github.branch == 'master'
+        if: github.ref == 'refs/heads/master'
         run: |
           echo "just testing!"
