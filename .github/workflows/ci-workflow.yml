@@ -27,6 +27,6 @@ jobs:
     if: github.branch == 'master'
     needs: [build]
     steps:
-      name: Push assets
-      run: |
-        echo "just testing!"
+      - name: Push assets
+        run: |
+          echo "just testing!"
