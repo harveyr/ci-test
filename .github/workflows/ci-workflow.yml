@@ -2,6 +2,19 @@
 name: ci-workflow
 on: [push]
 jobs:
+  futz-around:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@master
+      - name: if dev branch
+        if: github.branch == 'gh-ci-test'
+        run: |
+          echo "this is the dev branch"
+      - name: if master branch
+        if: github.branch == 'master'
+        run: |
+          echo "this is the master branch"
+
   build-py:
     runs-on: ubuntu-latest
     strategy:
@@ -26,9 +39,11 @@ jobs:
         run: |
           pip install pytest
           pytest tests.py
+
   build-js:
     runs-on: ubuntu-latest
     steps:
+      - uses: actions/checkout@master
       - name: Set Node.js 10.x
         uses: actions/setup-node@master
         with:
@@ -37,6 +52,7 @@ jobs:
         run: node --version
       - name: npm install
         run: cd js && npm install
+
   push:
     needs: [build-py, build-js]
     runs-on: ubuntu-latest
