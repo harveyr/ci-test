@@ -12,7 +12,7 @@ jobs:
     steps:
       - uses: actions/checkout@v1
       - name: Test custom action
-        uses: ./.github/actions/test-action.js
+        uses: ./.github/actions/test-action
         with:
           some_var: asdf
       - name: Set up Python ${{ matrix.python-version }}

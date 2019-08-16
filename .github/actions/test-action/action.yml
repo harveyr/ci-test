@@ -1,0 +1,6 @@
+# https://help.github.com/en/articles/metadata-syntax-for-github-actions
+
+name: custom action!
+author: Harvey Rogers
+description: It's just pretty good is all
+main: main.js
