@@ -10,7 +10,6 @@ jobs:
         env:
           GITHUB_CONTEXT: ${{ toJson(github) }}
         run: echo "$GITHUB_CONTEXT"
-      - name: Dump strategy context
       - name: if dev branch
         if: github.ref == 'gh-ci-test'
         run: |
