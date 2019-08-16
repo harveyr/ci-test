@@ -38,47 +38,47 @@ jobs:
         if: github.ref == 'refs/heads/master'
         run: |
           echo "this is the master branch"
-  # build-py:
-  #   runs-on: ubuntu-latest
-  #   strategy:
-  #     max-parallel: 4
-  #     matrix:
-  #       python-version: [3.7]
-  #   steps:
-  #     - uses: actions/checkout@master
-  #     - name: Test custom action
-  #       uses: ./.github/actions/test-action
-  #       with:
-  #         some_var: asdf
-  #     - name: Set up Python ${{ matrix.python-version }}
-  #       uses: actions/setup-python@v1
-  #       with:
-  #         version: ${{ matrix.python-version }}
-  #     - name: Install dependencies
-  #       run: |
-  #         python -m pip install --upgrade pip
-  #         pip install -r requirements.txt
-  #     - name: Test with pytest
-  #       run: |
-  #         pip install pytest
-  #         pytest tests.py
-  # build-js:
-  #   runs-on: ubuntu-latest
-  #   steps:
-  #     - uses: actions/checkout@master
-  #     - name: Set Node.js 10.x
-  #       uses: actions/setup-node@master
-  #       with:
-  #         version: 10.x
-  #     - name: test node install
-  #       run: node --version
-  #     - name: npm install
-  #       run: cd js && npm install
-  # push:
-  #   needs: [build-py, build-js]
-  #   runs-on: ubuntu-latest
-  #   steps:
-  #     - name: Push assets
-  #       if: github.branch == 'master'
-  #       run: |
-  #         echo "just testing!"
+  build-py:
+    runs-on: ubuntu-latest
+    strategy:
+      max-parallel: 4
+      matrix:
+        python-version: [3.7]
+    steps:
+      - uses: actions/checkout@master
+      - name: Test custom action
+        uses: ./.github/actions/test-action
+        with:
+          some_var: asdf
+      - name: Set up Python ${{ matrix.python-version }}
+        uses: actions/setup-python@v1
+        with:
+          version: ${{ matrix.python-version }}
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
+      - name: Test with pytest
+        run: |
+          pip install pytest
+          pytest tests.py
+  build-js:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@master
+      - name: Set Node.js 10.x
+        uses: actions/setup-node@master
+        with:
+          version: 10.x
+      - name: test node install
+        run: node --version
+      - name: npm install
+        run: cd js && npm install
+  push:
+    needs: [build-py, build-js]
+    runs-on: ubuntu-latest
+    steps:
+      - name: Push assets
+        if: github.branch == 'master'
+        run: |
+          echo "just testing!"
