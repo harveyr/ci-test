@@ -11,6 +11,10 @@ jobs:
 
     steps:
       - uses: actions/checkout@v1
+      - name: Test custom action
+        uses: .github/actions/test-action.js
+        with:
+          some_var: asdf
       - name: Set up Python ${{ matrix.python-version }}
         uses: actions/setup-python@v1
         with:
