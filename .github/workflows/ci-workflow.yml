@@ -2,11 +2,12 @@ name: ci-workflow
 on: [push]
 jobs:
   build:
+    if: always
     runs-on: ubuntu-latest
     strategy:
       max-parallel: 4
       matrix:
-        python-version: [3.6, 3.7]
+        python-version: [3.7]
 
     steps:
       - uses: actions/checkout@v1
@@ -21,4 +22,11 @@ jobs:
       - name: Test with pytest
         run: |
           pip install pytest
-          pytest
+          pytest tests.py
+  push:
+    if: github.branch == 'master'
+    needs: [build]
+    steps:
+      name: Push assets
+      run: |
+        echo "just testing!"
