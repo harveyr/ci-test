@@ -38,7 +38,7 @@ jobs:
       - name: npm install
         run: cd js && npm install
   push:
-    needs: [build]
+    needs: [build-py, build-js]
     runs-on: ubuntu-latest
     steps:
       - name: Push assets
