@@ -5,3 +5,5 @@ author: Harvey Rogers
 description: It's just pretty good is all
 using: node12
 main: main.js
+# TODO: not sure why I need this:
+runs: main.js
