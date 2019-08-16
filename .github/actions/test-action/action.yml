@@ -3,4 +3,5 @@
 name: custom action!
 author: Harvey Rogers
 description: It's just pretty good is all
+using: node12
 main: main.js
