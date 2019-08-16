@@ -49,6 +49,10 @@ jobs:
         uses: ./.github/actions/test-action
         with:
           some_var: asdf
+      - uses: harveyr/image-names-action@initial
+        with:
+          registryPath: us.gcr.io/harvey-ci-test
+          depsFiles: requirements.txt
       - name: Set up Python ${{ matrix.python-version }}
         uses: actions/setup-python@v1
         with:
