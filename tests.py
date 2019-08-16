@@ -1,9 +1,5 @@
 import unittest
 
-# prove that requirements were installed
-import click
-
-
 # copypasta from the docs: https://docs.python.org/2/library/unittest.html
 class TestStringMethods(unittest.TestCase):
 
